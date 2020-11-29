@@ -1,0 +1,12 @@
+@(name: String)
+
+@views.html.todolist.main(name) {
+<h3>マイページ</h3>
+<h4>@name さん</h4>
+<div class="w3-half">
+    <td><a href="/todolist/tasks"><span class="w3-button w3-black">戻る</span></a></td>
+    <td><a href="/todolist/changePassword"><span class="w3-button w3-blue">パスワード変更</span></a></td>
+    <td><a href="/"><span class="w3-button w3-green">ログアウト</span></a></td>
+</div>
+<td><a href="/todolist/deleteAccount"><span class="w3-button w3-red">アカウント削除</span></a></td>
+}

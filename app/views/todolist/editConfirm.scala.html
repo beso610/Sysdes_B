@@ -1,0 +1,24 @@
+@(task: models.Task)(implicit request: RequestHeader)
+
+@import helper._
+
+@views.html.todolist.main("確認画面") {
+<dl>
+    <dt>タスク</dt>
+    <dd>@task.title</dd>
+    <dt>説明</dt>
+    <dd>@task.description</dd>
+    <dt>状態</dt>
+    @if(task.isDone==false){
+    <dd>未完了</dd>
+    }else{
+    <dd>完了</dd>
+    }
+
+</dl>
+<p>以上の内容で登録します</p>
+<form action="/todolist/tasks/@task.id/confirm" method="POST">
+    @CSRF.formField
+    <input type="submit" value="OK">
+</form>
+}

@@ -1,0 +1,21 @@
+@(implicit request: RequestHeader)
+@import helper._
+@views.html.todolist.main("新規登録") {
+
+<form action="/todolist/newRegister/confirm" method="POST">
+    @CSRF.formField
+    <table class="w3-table">
+        <tr>
+            <th>ユーザ名</th>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <th>パスワード</th>
+            <td><input type="text" name="password"></td>
+        </tr>
+    </table>
+    <a href="/">戻る</a>
+    <input type="submit" value="登録">
+</form>
+
+}

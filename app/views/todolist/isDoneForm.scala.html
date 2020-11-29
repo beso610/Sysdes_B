@@ -1,0 +1,11 @@
+@(implicit request: RequestHeader)
+
+@import helper._
+
+@isDone = @{request.session.get("todolist::isDone").getOrElse("")}
+
+@register("メッセージ入力", "/todolist/register/isDone") {
+    @CSRF.formField
+    <input type="radio" name="isDone" value=true required>完了</input>
+    <input type="radio" name="isDone" value=false @if(isDone == false){ checked } required>未完了</input>
+}

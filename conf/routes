@@ -1,0 +1,43 @@
+# TodoList
+GET     /                               controllers.TodoListController.index
+GET     /todolist/newRegister           controllers.TodoListController.newRegister
+POST    /todolist/newRegister/confirm   controllers.TodoListController.newRegisterConfirm
+GET     /todolist/login                 controllers.TodoListController.login
+POST    /todolist/login/confirm         controllers.TodoListController.loginConfirm
+GET     /todolist/mypage                controllers.TodoListController.mypage
+GET     /todolist/changePassword        controllers.TodoListController.changePassword
+POST    /todolist/change                controllers.TodoListController.change
+GET     /todolist/deleteAccount         controllers.TodoListController.delete
+GET     /todolist/tasks                 controllers.TodoListController.list
+GET     /todolist/tasks/unfinished      controllers.TodoListController.unfinished
+GET     /todolist/tasks/:id             controllers.TodoListController.entry(id: Int)
+GET     /todolist/tasks/:id/edit        controllers.TodoListController.edit(id: Int)
+POST    /todolist/tasks/:id/confirm     controllers.TodoListController.editConfirm(id: Int)
+POST    /todolist/tasks/:id/delete      controllers.TodoListController.editDelete(id: Int)
+GET     /todolist/register              controllers.TodoListController.startRegistration
+
+POST    /todolist/register/title        controllers.TodoListController.registerTitle
+POST    /todolist/register/description  controllers.TodoListController.registerDescription
+
+POST    /todolist/register/confirm      controllers.TodoListController.confirm
+GET     /todolist                       controllers.Default.redirect(to = "/todolist/tasks")
+
+
+# Hello
+GET     /hello                      controllers.hello.Helloworld.display
+
+# Formapp
+## Normal
+GET     /formapp/messages           controllers.formapp.FormappController.list
+GET     /formapp/messages/:id       controllers.formapp.FormappController.entry(id: Int)
+GET     /formapp/register           controllers.formapp.FormappController.startRegistration
+POST    /formapp/register/name      controllers.formapp.FormappController.registerName
+POST    /formapp/register/gender    controllers.formapp.FormappController.registerGender
+POST    /formapp/register/message   controllers.formapp.FormappController.registerMessage
+POST    /formapp/register/confirm   controllers.formapp.FormappController.confirm
+GET     /formapp                    controllers.Default.redirect(to = "/formapp/messages")
+
+# Resources
+GET     /robot.txt                  controllers.Default.notFound
+GET     /favicon.ico                controllers.Assets.at(path="/public/images", file="favicon.png")
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

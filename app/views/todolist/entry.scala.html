@@ -1,0 +1,32 @@
+@(entry: models.Task)
+
+@views.html.todolist.main("タスク一覧") {
+<table class="w3-table">
+    <tr>
+        <th>ID</th>
+        <td>@entry.id</td>
+    </tr>
+    <tr>
+        <th>タスク</th>
+        <td>@entry.title</td>
+    </tr>
+    <tr>
+        <th>説明</th>
+        <td><textarea disabled>@entry.description</textarea></td>
+    </tr>
+    <tr>
+        <th>投稿日時</th>
+        <td>@entry.createdAt</td>
+    </tr>
+    <tr>
+        <th>状態</th>
+        @if(entry.isDone==false){
+            <td>未完了</td>
+        }else{
+            <td>完了</td>
+        }
+    </tr>
+</table>
+<a href="/todolist/tasks">戻る</a>
+<a href="/todolist/tasks/@entry.id/edit">編集</a>
+}

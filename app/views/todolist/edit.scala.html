@@ -1,0 +1,38 @@
+@(entry: models.Task)(implicit request: RequestHeader)
+@import helper._
+@views.html.todolist.main("タスク一覧") {
+
+<form action="/todolist/tasks/@entry.id/confirm" method="POST">
+    @CSRF.formField
+<table class="w3-table">
+    <tr>
+        <th>ID</th>
+        <td>@entry.id</td>
+    </tr>
+    <tr>
+        <th>タスク</th>
+        <td><input type="text" name="title" value="@entry.title"></td>
+    </tr>
+    <tr>
+        <th>説明</th>
+        <td><textarea name="description">@entry.description</textarea></td>
+
+    </tr>
+    <tr>
+        <th>投稿日時</th>
+        <td>@entry.createdAt</td>
+    </tr>
+    <tr>
+        <th>状態</th>
+        <td><input type="radio" name="isDone" value="true" @if(entry.isDone == true){ checked } required>完了</input>
+        <input type="radio" name="isDone" value="false" @if(entry.isDone == false){ checked } required>未完了</input></td>
+    </tr>
+</table>
+    <input type="submit" value="OK">
+</form>
+
+<form action="/todolist/tasks/@entry.id/delete" method="POST">
+    @CSRF.formField
+    <input type="submit" value="削除">
+</form>
+}
